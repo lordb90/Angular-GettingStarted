@@ -6,7 +6,7 @@ import { IProduct } from './iproduct';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent {
   Title = 'Product List';
   imageWidth = 50;
   imageMargin = 2;
@@ -29,7 +29,7 @@ export class ProductListComponent implements OnInit {
         'releaseDate': 'March 19, 2016',
         'description': 'Leaf rake with 48-inch wooden handle.',
         'price': 19.95,
-        'starRating': 3.2,
+        'starRating': 3.4,
         'imageUrl': 'http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png'
     },
     {
@@ -39,7 +39,7 @@ export class ProductListComponent implements OnInit {
         'releaseDate': 'March 18, 2016',
         'description': '15 gallon capacity rolling garden cart',
         'price': 32.99,
-        'starRating': 4.2,
+        'starRating': 4.5,
         'imageUrl': 'http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png'
     }
   ];
@@ -49,9 +49,9 @@ export class ProductListComponent implements OnInit {
     this.listFilter = 'cart';
   }
 
-  ngOnInit(): void {
-    console.log('Method OnInit not implemented.');
-  }
+  // ngOnInit(): void {
+  //   console.log('Method OnInit not implemented.');
+  // }
 
   performFilter(filterBy: string): IProduct[] {
     filterBy = filterBy.toLowerCase();
@@ -60,6 +60,10 @@ export class ProductListComponent implements OnInit {
 
   toggleImage(): void {
     this.showImage = !this.showImage;
+  }
+
+  onRatingClicked(message: string): void {
+    this.Title = 'Product List: ' + message;
   }
 
 }
